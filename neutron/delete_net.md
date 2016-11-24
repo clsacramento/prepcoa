@@ -4,6 +4,7 @@ In order to delete a network, make sure nothing is still plugged to it.
 
 ## First delete the network subnet
 
+Make sure to delete all vms or floating ips (if external) associated to the subnet.
 Verifying it is empty:
 
 Get the subnet id by doing 'neutron subnet-list'. With the id of the subnet, find out which ports are associated with it.
@@ -12,7 +13,18 @@ Get the subnet id by doing 'neutron subnet-list'. With the id of the subnet, fin
 neutron port-list -D | grep 02f240db-1741-4b95-901b-91e03c550163
 ~~~
 
-If no port shows up, this is good to delete the subnet:
+If no port shows up, this is good to delete the subnet. If only dhcp ports are on the network, this is ok. For example:
+
+~~~
+$ neutron port-show -F device_owner 82534331-9eae-4cf7-b71a-d6e338d33b40  
++--------------+--------------+
+| Field        | Value        |
++--------------+--------------+
+| device_owner | network:dhcp |
++--------------+--------------+
+~~~
+
+If it is good to delete, run this:
 
 ~~~
 $ neutron subnet-delete 02f240db-1741-4b95-901b-91e03c550163
