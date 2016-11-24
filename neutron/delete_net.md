@@ -4,7 +4,7 @@ In order to delete a network, make sure nothing is still plugged to it.
 
 ## First delete the network subnet
 
-Make sure to delete all vms or floating ips (if external) associated to the subnet.
+Make sure to delete all vms, routers or floating ips (if external) associated to the subnet.
 Verifying it is empty:
 
 Get the subnet id by doing 'neutron subnet-list'. With the id of the subnet, find out which ports are associated with it.
