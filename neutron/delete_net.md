@@ -86,6 +86,8 @@ Deleted router: 813be90d-9559-4ea8-8010-747dcf0a946a
 ~~~
 
 
+## Deleting the subnet when it is empty
+
 If it is good to delete, run this:
 
 ~~~
