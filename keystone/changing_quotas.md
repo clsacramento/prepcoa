@@ -33,3 +33,29 @@ These are default values.
 
 ## Changing quota for a tenant
 
+Example:
+
+~~~
+$ neutron quota-update --loadbalancer -1 --pool -1 --tenant-id  2d423f42d64243e1b6aebb223d10aae9 
++-----------------------+-------+
+| Field                 | Value |
++-----------------------+-------+
+| floatingip            | 50    |
+| healthmonitor         | -1    |
+| ikepolicy             | -1    |
+| ipsec_site_connection | -1    |
+| ipsecpolicy           | -1    |
+| listener              | -1    |
+| loadbalancer          | -1    |
+| network               | 100   |
+| pool                  | -1    |
+| port                  | 500   |
+| rbac_policy           | 10    |
+| router                | 150   |
+| security_group        | 100   |
+| security_group_rule   | 1000  |
+| subnet                | 100   |
+| subnetpool            | -1    |
+| vpnservice            | -1    |
++-----------------------+-------+
+~~~
