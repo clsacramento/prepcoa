@@ -147,7 +147,7 @@ $ openstack server show myvm -c name -c security_groups
 
 Security groups can be specified on vm creation, but if not, the vm will be on the default one.
 
-Check the rules on the default security group:
+### Check the rules on the default security group:
 
 ~~~
 $ openstack security group show default
@@ -169,6 +169,8 @@ $ openstack security group show default
 
 It is possible to authorize external traffic directly on the defalt security grup, but let's create new group for that:
 
+### Create new security group
+
 ~~~
 $ openstack security group create ext-group 
 +-------------+---------------------------------------------------------------------------------+
@@ -184,7 +186,9 @@ $ openstack security group create ext-group
 +-------------+---------------------------------------------------------------------------------+
 ~~~
 
-Authorized all external hosts to ping vms on this group:
+### Add rules to security group
+
+Authorizing all external hosts to ping vms on this group:
 
 ~~~
 $ openstack security group rule create --ingress --remote-ip 0.0.0.0/0 --protocol icmp ext-group+-------------------+--------------------------------------+
@@ -203,6 +207,8 @@ $ openstack security group rule create --ingress --remote-ip 0.0.0.0/0 --protoco
 | security_group_id | fd316524-dcc6-428c-ac0b-26aa45f07b11 |
 +-------------------+--------------------------------------+
 ~~~
+
+### Add security group to the vm
 
 And now ping?
 
@@ -229,5 +235,24 @@ PING 172.16.42.3 (172.16.42.3) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.446/1.511/2.577/1.066 ms
 ~~~
 
+### Add a rule for SSH
 
+~~~
+$ openstack security group rule create --ingress --remote-ip 0.0.0.0/0 --protocol tcp --dst-port 22 ext-group
++-------------------+--------------------------------------+
+| Field             | Value                                |
++-------------------+--------------------------------------+
+| direction         | ingress                              |
+| ethertype         | IPv4                                 |
+| headers           |                                      |
+| id                | 26ba1e6d-fb40-4a7d-8606-428000bf3a6e |
+| port_range_max    | 22                                   |
+| port_range_min    | 22                                   |
+| project_id        | 2d423f42d64243e1b6aebb223d10aae9     |
+| protocol          | tcp                                  |
+| remote_group_id   | None                                 |
+| remote_ip_prefix  | 0.0.0.0/0                            |
+| security_group_id | fd316524-dcc6-428c-ac0b-26aa45f07b11 |
++-------------------+--------------------------------------+
+~~~
 
