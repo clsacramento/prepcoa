@@ -184,9 +184,35 @@ $ openstack security group create ext-group
 +-------------+---------------------------------------------------------------------------------+
 ~~~
 
+Authorized all external hosts to ping vms on this group:
 
+~~~
+$ openstack security group rule create --ingress --remote-ip 0.0.0.0/0 --protocol icmp ext-group+-------------------+--------------------------------------+
+| Field             | Value                                |
++-------------------+--------------------------------------+
+| direction         | ingress                              |
+| ethertype         | IPv4                                 |
+| headers           |                                      |
+| id                | 67d7146c-2ddf-4bb2-8ac0-e60a1de823f0 |
+| port_range_max    | None                                 |
+| port_range_min    | None                                 |
+| project_id        | 2d423f42d64243e1b6aebb223d10aae9     |
+| protocol          | icmp                                 |
+| remote_group_id   | None                                 |
+| remote_ip_prefix  | 0.0.0.0/0                            |
+| security_group_id | fd316524-dcc6-428c-ac0b-26aa45f07b11 |
++-------------------+--------------------------------------+
+~~~
 
+And now ping?
 
+~~~
+$ ping 172.16.42.3
+PING 172.16.42.3 (172.16.42.3) 56(84) bytes of data.
+^C
+--- 172.16.42.3 ping statistics ---
+11 packets transmitted, 0 received, 100% packet loss, time 10078ms
+~~~
 
 
 
