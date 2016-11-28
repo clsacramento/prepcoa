@@ -214,6 +214,20 @@ PING 172.16.42.3 (172.16.42.3) 56(84) bytes of data.
 11 packets transmitted, 0 received, 100% packet loss, time 10078ms
 ~~~
 
+Not yet. The security group has to be added to the vm:
+
+~~~
+$ openstack server add security group myvm ext-group
+
+$ ping 172.16.42.3
+PING 172.16.42.3 (172.16.42.3) 56(84) bytes of data.
+64 bytes from 172.16.42.3: icmp_seq=1 ttl=61 time=2.57 ms
+64 bytes from 172.16.42.3: icmp_seq=2 ttl=61 time=0.446 ms
+^C
+--- 172.16.42.3 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 0.446/1.511/2.577/1.066 ms
+~~~
 
 
 
