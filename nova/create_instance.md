@@ -85,7 +85,7 @@ Keypair: mykey
 Private subnet ID: 4d6f2b18-6643-41b2-a71a-c98e204d2b5f
 
 ~~~
-$ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 2 --key-name stackato --nic net-id=8ebd252c-5488-4600-aba3-2f7b4fcdff48 myvm
+$ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 2 --key-name stackato --nic net-id=8ebd252c-5488-4600-aba3-2f7b4fcdff48 myvm 
 +--------------------------------------+------------------------------------------------------------+
 | Field                                | Value                                                      |
 +--------------------------------------+------------------------------------------------------------+
@@ -93,7 +93,7 @@ $ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 
 | OS-EXT-AZ:availability_zone          |                                                            |
 | OS-EXT-SRV-ATTR:host                 | None                                                       |
 | OS-EXT-SRV-ATTR:hypervisor_hostname  | None                                                       |
-| OS-EXT-SRV-ATTR:instance_name        | instance-0000000d                                          |
+| OS-EXT-SRV-ATTR:instance_name        | instance-0000001f                                          |
 | OS-EXT-STS:power_state               | NOSTATE                                                    |
 | OS-EXT-STS:task_state                | scheduling                                                 |
 | OS-EXT-STS:vm_state                  | building                                                   |
@@ -102,14 +102,14 @@ $ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 
 | accessIPv4                           |                                                            |
 | accessIPv6                           |                                                            |
 | addresses                            |                                                            |
-| adminPass                            | HSwZHZWrpS3Z                                               |
+| adminPass                            | 4XP4JUez3EYL                                               |
 | config_drive                         |                                                            |
-| created                              | 2016-11-25T17:28:38Z                                       |
+| created                              | 2016-11-28T11:58:38Z                                       |
 | flavor                               | m1.small (2)                                               |
 | hostId                               |                                                            |
-| id                                   | a757d202-0c4b-4be6-8a3d-f6e9d4fe419e                       |
+| id                                   | 90a7997e-e0a7-4f94-9c31-307c3d643170                       |
 | image                                | Ubuntu-14.04-x86_64 (555f8798-d122-47e4-b67f-fc3850b4628d) |
-| key_name                             | mykey                                                      |
+| key_name                             | stackato                                                   |
 | name                                 | myvm                                                       |
 | os-extended-volumes:volumes_attached | []                                                         |
 | progress                             | 0                                                          |
@@ -117,7 +117,7 @@ $ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 
 | properties                           |                                                            |
 | security_groups                      | [{u'name': u'default'}]                                    |
 | status                               | BUILD                                                      |
-| updated                              | 2016-11-25T17:28:43Z                                       |
+| updated                              | 2016-11-28T11:58:39Z                                       |
 | user_id                              | d4e35a07820641278c69617a29b9b92f                           |
 +--------------------------------------+------------------------------------------------------------+
 ~~~
@@ -125,6 +125,23 @@ $ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 
 ## Wait until vm is Active
 
 ~~~
-
+$ openstack server list
++--------------------------------------+------+--------+----------+---------------------+
+| ID                                   | Name | Status | Networks | Image Name          |
++--------------------------------------+------+--------+----------+---------------------+
+| 90a7997e-e0a7-4f94-9c31-307c3d643170 | myvm | BUILD  |          | Ubuntu-14.04-x86_64 |
++--------------------------------------+------+--------+----------+---------------------+
+$ openstack server list
++--------------------------------------+------+--------+------------------+---------------------+
+| ID                                   | Name | Status | Networks         | Image Name          |
++--------------------------------------+------+--------+------------------+---------------------+
+| 90a7997e-e0a7-4f94-9c31-307c3d643170 | myvm | BUILD  | paasnet=10.0.0.6 | Ubuntu-14.04-x86_64 |
++--------------------------------------+------+--------+------------------+---------------------+
+$ openstack server list
++--------------------------------------+------+--------+------------------+---------------------+
+| ID                                   | Name | Status | Networks         | Image Name          |
++--------------------------------------+------+--------+------------------+---------------------+
+| 90a7997e-e0a7-4f94-9c31-307c3d643170 | myvm | ACTIVE | paasnet=10.0.0.6 | Ubuntu-14.04-x86_64 |
++--------------------------------------+------+--------+------------------+---------------------+
 ~~~
 
