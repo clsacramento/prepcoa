@@ -59,12 +59,13 @@ The users that were created have the 'paas' project as default but they don't ac
 
 Because of that, if someone tries to authenticate with paasuser or paasadmin, he will get this message 'You are not authorized for any projects or domains.'
 
-To fix this, it is necessary to assing at list one role for each user on a project. User roles is the way to determine what each user can do on OpenStack, they are defined on the 'policy.json' configuration for each openstack project.
+To fix this, it is necessary to assign at list one role for each user on a project. User roles is the way to determine what each user can do on OpenStack, they are defined on the 'policy.json' configuration for each openstack project.
 
 
 ### Listing available roles
 
 ~~~
+$ openstack role list
 +----------------------------------+---------------------------+
 | ID                               | Name                      |
 +----------------------------------+---------------------------+
