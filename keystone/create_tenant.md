@@ -112,4 +112,39 @@ $ openstack role assignment list --project paas
 +----------------------------+----------------------------+-------+------------------------------+--------+-----------+
 ~~~
 
+# Groups
+
+User groups is an aggregation of users from different projects.
+
+## Creating groups
+~~~
+$ openstack group create --domain default coolusers
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description |                                  |
+| domain_id   | default                          |
+| id          | 0de2fb09bb37466fb5e97b8ddaa9c31e |
+| name        | coolusers                        |
++-------------+----------------------------------+
+~~~
+~~~
+openstack group list
++----------------------------------+-----------+
+| ID                               | Name      |
++----------------------------------+-----------+
+| 0de2fb09bb37466fb5e97b8ddaa9c31e | coolusers |
++----------------------------------+-----------+
+~~~
+
+## Adding users to group
+~~~
+$ openstack group add user coolusers admin
+admin added to group coolusers
+$ openstack group add user coolusers demo 
+demo added to group coolusers
+$ openstack group add user coolusers paasadmin
+paasadmin added to group coolusers
+~~~
+
 
