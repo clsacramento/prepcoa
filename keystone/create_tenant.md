@@ -148,3 +148,35 @@ paasadmin added to group coolusers
 ~~~
 
 
+## Adding a role to a group
+Having created a group, it is possible to assign a role to all members of that group. Instead of manually adding it for each user. Removing a group of the group, revokes the role granted to the user through the group.
+~~~
+$ openstack role add --group coolusers --project services _member_
+$ openstack role assignment list --group coolusers
++----------------------------------+------+----------------------------------+----------------------------------+--------+-----------+
+| Role                             | User | Group                            | Project                          | Domain | Inherited |
++----------------------------------+------+----------------------------------+----------------------------------+--------+-----------+
+| 9fe2ff9ee4384b1894a90878d3e92bab |      | 0de2fb09bb37466fb5e97b8ddaa9c31e | 9f27b74f5f094b7e9069c80c3a2c1a43 |        | False     |
++----------------------------------+------+----------------------------------+----------------------------------+--------+-----------+
+$ openstack role show 9fe2ff9ee4384b1894a90878d3e92bab
++-------------+-----------------------------------------------+
+| Field       | Value                                         |
++-------------+-----------------------------------------------+
+| description | Bootstrap  roles  created via keystone deploy |
+| domain_id   | None                                          |
+| id          | 9fe2ff9ee4384b1894a90878d3e92bab              |
+| name        | _member_                                      |
++-------------+-----------------------------------------------+
+$ openstack project show 9f27b74f5f094b7e9069c80c3a2c1a43
++-------------+------------------------------------------------+
+| Field       | Value                                          |
++-------------+------------------------------------------------+
+| description | Bootstrap accounts created via keystone deploy |
+| domain_id   | default                                        |
+| enabled     | True                                           |
+| id          | 9f27b74f5f094b7e9069c80c3a2c1a43               |
+| is_domain   | False                                          |
+| name        | services                                       |
+| parent_id   | default                                        |
++-------------+------------------------------------------------+
+~~~
