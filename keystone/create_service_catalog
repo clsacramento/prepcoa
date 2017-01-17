@@ -1,0 +1,7 @@
+Service Catalog
+===============
+
+Service catalog provides endpoints to clients.
+
+In order to create an endpoint, a service has to be created:
+
