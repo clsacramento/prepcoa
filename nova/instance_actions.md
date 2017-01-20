@@ -87,8 +87,8 @@ ubuntu@jb16:~$
 ~~~
 
 
-## Pause
-
+## Pause/Unpause
+This command stores the state of the VM in RAM. A paused instance continues to run in a frozen state.
 ~~~
 $ openstack server list
 +--------------------------------------+-----------------------------------------+--------+---------------------------------+---------------------+
@@ -120,4 +120,28 @@ $ openstack server list
 | 7c965152-8960-49f6-b50a-dc843a6e189a | jumpbox                                 | ACTIVE | priv=10.0.0.5, 172.16.108.36    | Ubuntu-14.04-x86_64 |
 +--------------------------------------+-----------------------------------------+--------+---------------------------------+---------------------+
 
+~~~
+
+## Suspend/Resume
+
+To initiate a hypervisor-level suspend operation, run the following command:
+
+~~~
+$ openstack server suspend INSTANCE_NAME
+~~~
+
+To resume a suspended instance, run the following command:
+~~~
+$ openstack server resume INSTANCE_NAME
+~~~
+
+## Shelve/unshelve
+
+Shelve an instance - Shuts down the instance, and stores it together with associated data and resources (a snapshot is taken if not volume backed). Anything in memory is lost.
+
+Unshelve an instance - Restores the instance.
+~~~
+$ openstack server helve SERVERNAME
+
+$ openstack server unshelve SERVERNAME
 ~~~
