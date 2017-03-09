@@ -91,7 +91,7 @@ $ openstack floating ip list
 
 Then associate them:
 ~~~
-$ openstack server add floating ip myvm 172.16.42.3
+$ openstack ip floating add 172.16.42.3 myvm
 ~~~
 
 The command does not return any output so check if it worked:
