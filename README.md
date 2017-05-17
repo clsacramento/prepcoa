@@ -51,6 +51,7 @@ Below are the specific content areas (Domains) and the specific tasks on which c
     Manage access to object storage
     Manage expiring objects
     Manage storage policies
+    Manage Swift quotas
     Monitor space available for object store
     Verify operation of Object Storage
     Manage permissions on a container in object storage

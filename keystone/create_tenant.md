@@ -53,6 +53,17 @@ User Password:
 Repeat User Password:
 ~~~
 
+### Creating roles
+~~~
+$ openstack role create test_role
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | 2b19a7f3ed6049738eee79372cf48991 |
+| name  | test_role                        |
++-------+----------------------------------+
+~~~
+
 ## Assigning roles
 
 The users that were created have the 'paas' project as default but they don't actually have a role with that project.
@@ -60,7 +71,15 @@ The users that were created have the 'paas' project as default but they don't ac
 Because of that, if someone tries to authenticate with paasuser or paasadmin, he will get this message 'You are not authorized for any projects or domains.'
 
 To fix this, it is necessary to assign at list one role for each user on a project. User roles is the way to determine what each user can do on OpenStack, they are defined on the 'policy.json' configuration for each openstack project.
-
+~~~
+$ openstack role add test_role --user toto --project plop
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | 2b19a7f3ed6049738eee79372cf48991 |
+| name  | test_role                        |
++-------+----------------------------------+
+~~~
 
 ### Listing available roles
 
@@ -98,6 +117,19 @@ $ openstack role add --project paas --user paasadmin admin
 
 To check the roles were added to the users, run:
 
+Note that --project requires an id and that the user is required 
+~~~
+$ openstack user role list toto --project adf2dbb21fce4c7b90f4833809584ff1
++----------------------------------+-----------+---------+------+
+| ID                               | Name      | Project | User |
++----------------------------------+-----------+---------+------+
+| 9fe2ff9ee4384b1894a90878d3e92bab | _member_  | plop    | toto |
+| 2b19a7f3ed6049738eee79372cf48991 | test_role | plop    | toto |
++----------------------------------+-----------+---------+------+
+
+~~~
+
+Mitaka and onwards
 ~~~
 $ openstack role assignment list --project paas
 +----------------------------+----------------------------+-------+------------------------------+--------+-----------+
