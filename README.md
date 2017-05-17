@@ -1,4 +1,4 @@
-# prepcoa
+# Prepcoa
 Creating this list to prep for COA exam. Obviously I am building it before taking it so hopefully it will cover the essential content but no garanties.
 
 
