@@ -190,12 +190,15 @@ d
 ~~~
 
 ## Expiring Objects
-Object deletion is set on epoch time. For example, one day would be:
+
+### Epoch
+Object deletion is set on epoch time. For example, one day (846400 seconds) would be:
 ~~~
-24*60*60 = 846400
+# echo $((24*60*60))
+86400
 ~~~
 
-Generating an epoch
+### Generating an epoch
 ~~~
 date --date="19-FEB-17 14:30:15" +%s
 1487514615
