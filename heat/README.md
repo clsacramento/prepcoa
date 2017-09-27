@@ -331,7 +331,7 @@ Checking VM created by the stack:
 ~~~
 
 
-## Template that create multiple VMs
+## Template that creates multiple VMs
 
 ~~~
 # cat vmsgroup.yml 
