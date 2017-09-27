@@ -33,6 +33,35 @@ swift post test_container .bashrc -r ""
 swift post test_container .bashrc -w ""
 ~~~
 
+## More ACL's examples
+
+### Create a public container
+
+Pre-create some files to upload
+~~~
+# mkdir public
+# cd public
+echo a > a
+echo b > b
+# ls
+a  b
+~~~
+
+Upload these files:
+~~~
+# swift upload public a 
+a
+# swift upload public b
+b
+~~~
+
+Make the container public:
+The following allows anybody to list objects in the 'public' container and download objects. The users do not need to include a token in their request. This ACL is commonly referred to as making the container “public”. It is useful when used with StaticWeb:
+
+~~~
+
+~~~
+
 ## Expiring Objects
 Object deletion is set on epoch time. For example, one day would be:
 ~~~
