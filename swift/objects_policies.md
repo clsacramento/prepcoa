@@ -145,9 +145,48 @@ X-Storage-Policy: General
       X-Trans-Id: tx66efad0f53044ca9b894b-0059cb90d6
 ~~~
 
-Login as different user and upload a file to publicrw:
-~~~
+#### Login as different user and observe differences in both containers.
 
+List is allowed on 'public' but not on 'publicrw':
+~~~
+# . user2rc
+# swift --os-storage-url https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd list public
+a
+b
+# swift --os-storage-url https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd list publicrw
+Container GET failed: https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/publicrw?format=json 403 Forbidden  [first 60 chars of response] b'<html><h1>Forbidden</h1><p>Access was denied to this resourc'
+Failed Transaction ID: tx2df09e3ae3f3452f80ed5-0059cba521
+~~~
+ 
+ Try uploading a file to each container:
+~~~
+# echo c > c
+# swift --os-storage-url https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd upload public c
+Warning: failed to create container 'public': 403 Forbidden: <html><h1>Forbidden</h1><p>Access was denied to this resourc
+Object PUT failed: https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/public/c 403 Forbidden  [first 60 chars of response] b'<html><h1>Forbidden</h1><p>Access was denied to this resourc'
+# swift --os-storage-url https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd upload publicrw c
+Warning: failed to create container 'publicrw': 403 Forbidden: <html><h1>Forbidden</h1><p>Access was denied to this resourc
+c
+# curl -k https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/publicrw/c
+c
+~~~
+ Despite the Warnings about not being able to create a contianer, the 'c' file is uploaded to 'publicrw' but not to 'public'.
+ 
+ #### TIP
+ 
+ You can obtain the token of an authenticated user with 'swift auth' and the use cURL to manage objects:
+~~~
+# source user2rc
+# swift auth
+export OS_STORAGE_URL=https://172.16.101.5:8080/v1/AUTH_825bbe64b5fe4a5b93117e996773f4da
+export OS_AUTH_TOKEN=bff82feb88534af5b160e313036ffd49
+# curl -k -X GET -H 'X-Auth-Token: 34dce60c28fa42e498ce3bed4b1f0fd2' https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/public # list objects
+a
+b
+# echo d > d #new file
+# curl -k -X PUT -H 'X-Auth-Token: 34dce60c28fa42e498ce3bed4b1f0fd2' https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/publicrw/ -T d
+# curl -k -X GET -H 'X-Auth-Token: 34dce60c28fa42e498ce3bed4b1f0fd2' https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/publicrw/d # download object
+d
 ~~~
 
 ## Expiring Objects
