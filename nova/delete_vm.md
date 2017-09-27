@@ -23,7 +23,7 @@ $ openstack server show myvm
 | hostId                               | 88c4eca3afb66c67cd10555cbb9f9ae3f764872debe6f28f5f208395             |
 | id                                   | 90a7997e-e0a7-4f94-9c31-307c3d643170                                 |
 | image                                | 555f8798-d122-47e4-b67f-fc3850b4628d                                 |
-| key_name                             | stackato                                                             |
+| key_name                             | mykey                                                             |
 | name                                 | myvm                                                                 |
 | os-extended-volumes:volumes_attached | []                                                                   |
 | progress                             | 0                                                                    |
