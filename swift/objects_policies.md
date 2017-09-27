@@ -2,6 +2,9 @@
 
 ## Changing an object's ACL
 
+Doc: https://docs.openstack.org/swift/ocata/overview_acl.html
+
+
 Adding a read ACL
 
 ### To a container
@@ -89,7 +92,7 @@ curl -k https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/publi
 b
 ~~~
 
-### Make a continaer publicly writable (but requires keystone token):
+### Make a container publicly writable (but requires keystone token):
 The following allows anybody to upload or download objects. However, to download an object, the exact name of the object must be known since users cannot list the objects in the container. The users must include a Keystone token in the upload request. However, it does not need to be scoped to the project associated with the container:
 
 
@@ -149,7 +152,7 @@ X-Storage-Policy: General
 
 List is allowed on 'public' but not on 'publicrw':
 ~~~
-# . user2rc
+# . user2rc #a user in a different tenant
 # swift --os-storage-url https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd list public
 a
 b
@@ -170,11 +173,11 @@ c
 # curl -k https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/publicrw/c
 c
 ~~~
- Despite the Warnings about not being able to create a contianer, the 'c' file is uploaded to 'publicrw' but not to 'public'.
+ Despite the Warnings about not being able to create a container, the 'c' file is uploaded to 'publicrw' but not to 'public'.
  
  #### TIP
  
- You can obtain the token of an authenticated user with 'swift auth' and the use cURL to manage objects:
+ You can obtain the token of an authenticated user with 'swift auth' and then use cURL to manage objects:
 ~~~
 # source user2rc
 # swift auth
@@ -190,6 +193,8 @@ d
 ~~~
 
 ## Expiring Objects
+
+Doc: https://docs.openstack.org/swift/ocata/overview_expiring_objects.html
 
 ### Epoch
 Object deletion is set on epoch time. For example, one day (846400 seconds) would be:
