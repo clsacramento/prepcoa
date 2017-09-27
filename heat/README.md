@@ -231,7 +231,58 @@ Try again:
 | timeout_mins          | None                                                                                       |
 | updated_time          | None                                                                                       |
 +-----------------------+--------------------------------------------------------------------------------------------+
+~~~
 
+Now that it seems ok, let's create the stack:
+
+To create a stack:
+~~~
+openstack stack create -e parameters -t vm.yml teststack
+~~~
+We will be using the '--wait' option that will print progress on the output and finish when all resources of the stack is created:
+~~~
+# openstack stack create -e parameters -t vm.yml --wait teststack
+2017-09-27 15:31:35Z [teststack]: CREATE_IN_PROGRESS  Stack CREATE started
+2017-09-27 15:31:38Z [teststack.server]: CREATE_IN_PROGRESS  state changed
+2017-09-27 15:32:10Z [teststack.server]: CREATE_COMPLETE  state changed
+2017-09-27 15:32:10Z [teststack]: CREATE_COMPLETE  Stack CREATE completed successfully
++---------------------+---------------------------------------------------------------------------------------------------------------------+
+| Field               | Value                                                                                                               |
++---------------------+---------------------------------------------------------------------------------------------------------------------+
+| id                  | e2959898-d328-4111-9460-06520c890429                                                                                |
+| stack_name          | teststack                                                                                                           |
+| description         | Hello world HOT template that just defines a single server. Contains just base features to verify base HOT support. |
+|                     |                                                                                                                     |
+| creation_time       | 2017-09-27T15:31:34Z                                                                                                |
+| updated_time        | None                                                                                                                |
+| stack_status        | CREATE_COMPLETE                                                                                                     |
+| stack_status_reason | Stack CREATE completed successfully                                                                                 |
++---------------------+---------------------------------------------------------------------------------------------------------------------+
 ~~~
 
 
+Obtaining the stack output:
+~~~
+# openstack stack output list teststack
++-----------------+-------------------------------------+
+| output_key      | description                         |
++-----------------+-------------------------------------+
+| server_networks | The networks of the deployed server |
++-----------------+-------------------------------------+
+# openstack stack output show teststack server_networks
++--------------+---------------------------------------------+
+| Field        | Value                                       |
++--------------+---------------------------------------------+
+| description  | The networks of the deployed server         |
+| output_key   | server_networks                             |
+| output_value | {                                           |
+|              |   "560195e7-5a82-4b58-8e87-6dd47bcace30": [ |
+|              |     "10.0.0.4"                              |
+|              |   ],                                        |
+|              |   "private": [                              |
+|              |     "10.0.0.4"                              |
+|              |   ]                                         |
+|              | }                                           |
++--------------+---------------------------------------------+
+
+~~~
