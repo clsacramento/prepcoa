@@ -28,7 +28,7 @@ parameters:
   key_name:
     type: string
     description: Name of an existing key pair to use for the server
-    default: stackato
+    default: mykey
     constraints:
       - custom_constraint: nova.keypair
   flavor:
@@ -287,6 +287,49 @@ Obtaining the stack output:
 
 ~~~
 
+Checking VM created by the stack:
+
+~~~
+# openstack stack resource list teststack
++---------------+--------------------------------------+------------------+-----------------+----------------------+
+| resource_name | physical_resource_id                 | resource_type    | resource_status | updated_time         |
++---------------+--------------------------------------+------------------+-----------------+----------------------+
+| server        | ae085cf7-ec6b-4934-a578-9c619f0d9610 | OS::Nova::Server | CREATE_COMPLETE | 2017-09-27T15:31:35Z |
++---------------+--------------------------------------+------------------+-----------------+----------------------+
+
+# openstack server show ae085cf7-ec6b-4934-a578-9c619f0d9610
++-----------------------------+----------------------------------------------------------+
+| Field                       | Value                                                    |
++-----------------------------+----------------------------------------------------------+
+| OS-DCF:diskConfig           | MANUAL                                                   |
+| OS-EXT-AZ:availability_zone | nova                                                     |
+| OS-EXT-STS:power_state      | Running                                                  |
+| OS-EXT-STS:task_state       | None                                                     |
+| OS-EXT-STS:vm_state         | active                                                   |
+| OS-SRV-USG:launched_at      | 2017-09-27T15:32:07.000000                               |
+| OS-SRV-USG:terminated_at    | None                                                     |
+| accessIPv4                  |                                                          |
+| accessIPv6                  |                                                          |
+| addresses                   | private=10.0.0.4                                         |
+| config_drive                |                                                          |
+| created                     | 2017-09-27T15:31:41Z                                     |
+| flavor                      | m1.small (2)                                             |
+| hostId                      | 409e44b5b906261de8836c9d637e97c1256a9b890060c19d534bfb70 |
+| id                          | ae085cf7-ec6b-4934-a578-9c619f0d9610                     |
+| image                       | CentOS-7-x86_64 (3d340ada-e65d-4669-8589-ab8317633ac9)   |
+| key_name                    | mykey                                                 |
+| name                        | teststack-server-nzidhufjh7r7                            |
+| progress                    | 0                                                        |
+| project_id                  | 2fa0fe127fdb40f68cdefde64e36c7fd                         |
+| properties                  |                                                          |
+| security_groups             | name='default'                                           |
+| status                      | ACTIVE                                                   |
+| updated                     | 2017-09-27T15:32:07Z                                     |
+| user_id                     | 23bc795243c2467baef22c7cc1ed3771                         |
+| volumes_attached            |                                                          |
++-----------------------------+----------------------------------------------------------+
+~~~
+
 
 ## Template that create multiple VMs
 
@@ -306,7 +349,7 @@ parameters:
   key_name:
     type: string
     description: Name of an existing key pair to use for the server
-    default: stackato
+    default: mykey
     constraints:
       - custom_constraint: nova.keypair
   flavor:
