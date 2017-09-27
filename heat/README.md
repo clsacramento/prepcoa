@@ -141,7 +141,7 @@ Try again:
 |                       |   "network": "private",                                                                    |
 |                       |   "OS::stack_name": "teststack",                                                           |
 |                       |   "admin_pass": "******",                                                                  |
-|                       |   "key_name": "stackato",                                                                  |
+|                       |   "key_name": "mykey",                                                                  |
 |                       |   "image": "CentOS-7-x86_64",                                                              |
 |                       |   "db_port": "50000",                                                                      |
 |                       |   "OS::stack_id": "None",                                                                  |
@@ -210,7 +210,7 @@ Try again:
 |                       |       "user_data_format": "HEAT_CFNTOOLS",                                                 |
 |                       |       "admin_user": null,                                                                  |
 |                       |       "block_device_mapping": null,                                                        |
-|                       |       "key_name": "stackato",                                                              |
+|                       |       "key_name": "mykey",                                                              |
 |                       |       "software_config_transport": "POLL_SERVER_CFN",                                      |
 |                       |       "name": null,                                                                        |
 |                       |       "block_device_mapping_v2": null,                                                     |
