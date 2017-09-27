@@ -63,7 +63,7 @@ The following allows anybody to list objects in the 'public' container and downl
 ~~~
 
 
-List information about the container
+List information about the uploaded object
 ~~~
 # swift stat public a -v
            URL: https://172.16.101.5:8080/v1/AUTH_2fa0fe127fdb40f68cdefde64e36c7fd/public/a
