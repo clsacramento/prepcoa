@@ -65,8 +65,8 @@ $ openstack server migrate jb16 --wait --disk-overcommit
 
 ## SSH
 ~~~
-$ openstack server ssh --login ubuntu --identity cliconfig/stackato.pem jb16
- openstack server ssh --login ubuntu --identity cliconfig/stackato.pem jb16
+$ openstack server ssh --login ubuntu --identity cliconfig/mykey.pem jb16
+ openstack server ssh --login ubuntu --identity cliconfig/mykey.pem jb16
 The authenticity of host '172.16.108.37 (172.16.108.37)' can't be established.
 ECDSA key fingerprint is 13:51:ea:34:9c:66:f8:5b:9e:5b:1b:d3:d0:95:56:b1.
 Are you sure you want to continue connecting (yes/no)? yes
