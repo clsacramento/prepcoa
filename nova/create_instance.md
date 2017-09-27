@@ -85,7 +85,7 @@ Keypair: mykey
 Private subnet ID: 4d6f2b18-6643-41b2-a71a-c98e204d2b5f
 
 ~~~
-$ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 2 --key-name stackato --nic net-id=8ebd252c-5488-4600-aba3-2f7b4fcdff48 myvm 
+$ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 2 --key-name meykey --nic net-id=8ebd252c-5488-4600-aba3-2f7b4fcdff48 myvm 
 +--------------------------------------+------------------------------------------------------------+
 | Field                                | Value                                                      |
 +--------------------------------------+------------------------------------------------------------+
@@ -109,7 +109,7 @@ $ openstack server create --image 555f8798-d122-47e4-b67f-fc3850b4628d --flavor 
 | hostId                               |                                                            |
 | id                                   | 90a7997e-e0a7-4f94-9c31-307c3d643170                       |
 | image                                | Ubuntu-14.04-x86_64 (555f8798-d122-47e4-b67f-fc3850b4628d) |
-| key_name                             | stackato                                                   |
+| key_name                             | mykey                                                   |
 | name                                 | myvm                                                       |
 | os-extended-volumes:volumes_attached | []                                                         |
 | progress                             | 0                                                          |
