@@ -16,10 +16,10 @@ swift post test_container .bashrc -r ".r:*"
 
 ### Write ACL
 ~~~
-swift post test_container .bashrc -w ".r:*"
+swift post test_container .bashrc -w "*:*"
 ~~~
 
-### Syntax:
+### Syntax for referers (only for read ACLs):
  - ".r:*" : All referrers.
  - ".r:example.com,swift.example.com" : Comma separated list of referrers
  - ".rlistings" : Container listing access
