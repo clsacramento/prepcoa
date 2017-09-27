@@ -206,7 +206,21 @@ date --date="19-FEB-17 14:30:15" +%s
 date -d@1487514615
 Sun Feb 19 14:30:15 UTC 2017
 ~~~
+TIP: 'date --help' will give an example of epoch conversion
 
+Obtaining date in a format that can be converted to epoch:
+~~~
+# date +"%d-%b-%Y %T"
+27-Sep-2017 14:35:13
+# date -d"27-Sep-2017 14:33:10" +%s
+1506522790
+# date  -d@1506522790
+Wed Sep 27 14:33:10 UTC 2017
+# date  -d@1506522790 +"%d-%b-%Y %T"
+27-Sep-2017 14:33:10
+~~~
+
+### Configuring object expiration
 ~~~
 $ swift post test_container .bashrc -H "X-Delete-At:1513641600"
 
