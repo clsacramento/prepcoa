@@ -61,5 +61,36 @@ Additional middleware: tempurl
 ===============================================================================
 [2016-09-04 11:46:03] Checking load averages[5m_load_avg] low: 1, high: 1, avg: 1.5, total: 1, Failed: 0.0%, no_result: 0, reported: 1
 [15m_load_avg] low: 1, high: 1, avg: 1.1, total: 1, Failed: 0.0%, no_result: 0, reported: 1
-[1m_load_avg] low: 1, high: 1, avg: 1.3, total: 1, Failed: 0.0%, no_result: 0, reported: 1==============================================================================
+[1m_load_avg] low: 1, high: 1, avg: 1.3, total: 1, Failed: 0.0%, no_result: 0, reported: 1
+==============================================================================
+~~~
+
+## Obtain disk usage stats
+~~~
+# swift-recon -d
+===============================================================================
+--> Starting reconnaissance on 1 hosts
+===============================================================================
+[2016-09-04 11:46:09] Checking disk usage now
+Distribution Graph:
+10%    1 *********************************************************************
+Disk usage: space used: 201555968 of 1945976832
+Disk usage: space free: 1744420864 of 1945976832
+Disk usage: lowest: 10.36%, highest: 10.36%, avg: 10.357572849%
+===============================================================================
+~~~
+
+## Obtain replication stats
+~~~
+# swift-recon -r
+===============================================================================
+--> Starting reconnaissance on 1 hosts
+===============================================================================
+[2016-09-04 11:45:57] Checking on replication
+[replication_failure] low:2, high:2, avg:2.0, total: 2, Failed: 0.0%, no_result: 0, reported: 1
+[replication_success] low:0, high:0, avg:0.0, total: 0, Failed: 0.0%, no_result: 0, reported: 1
+[replication_time] low: 0, high: 0, avg: 0.0, total: 0, Failed: 0.0%, no_result: 0, reported: 1
+[replication_attempted] low: 1514, high: 1514, avg: 1514.0, total: 1514, Failed: 0.0%, no_result: 0, reported: 1Ol
+dest completion was 2016-09-04 11:45:51 (5 seconds ago) by 10.0.2.15:6000.Most recent completion was 2016-09-04 11:45:51 (5 seconds ago) by 10.0.2.15:6000.
+===============================================================================
 ~~~
