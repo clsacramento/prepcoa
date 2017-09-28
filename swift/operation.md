@@ -51,3 +51,9 @@ Additional middleware: tempurl
  Options:
   methods: [u'GET', u'HEAD', u'PUT', u'POST', u'DELETE']
 ~~~
+
+
+## Check cluster load:
+~~~
+# swift-recon -l===============================================================================--> Starting reconnaissance on 1 hosts===============================================================================[2016-09-04 11:46:03] Checking load averages[5m_load_avg] low: 1, high: 1, avg: 1.5, total: 1, Failed: 0.0%, no_result: 0, reported: 1[15m_load_avg] low: 1, high: 1, avg: 1.1, total: 1, Failed: 0.0%, no_result: 0, reported: 1[1m_load_avg] low: 1, high: 1, avg: 1.3, total: 1, Failed: 0.0%, no_result: 0, reported: 1==============================================================================
+~~~
