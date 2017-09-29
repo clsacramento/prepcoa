@@ -12,6 +12,12 @@
 # mysqldump --opt neutron > /tmp/neutron.sql
 ~~~
 
+### To restore a single OpenStack DB
+
+~~~
+# sudo mysql -h localhost < nova.sql
+~~~
+
 ## Nova Status
 
 ### List Hosts
